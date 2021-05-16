@@ -11,9 +11,12 @@ const submit =(e)=>{
     if(!title || !Desc){
         alert("Fill Data")
     }
-    props.AddTodoData(title,Desc);
-    settitle("")
-    setDesc("")
+    else{
+
+      props.AddTodoData(title,Desc);
+      settitle("")
+      setDesc("")
+    }
 }
     return (
         

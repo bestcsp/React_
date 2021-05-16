@@ -4,8 +4,15 @@ import Header from "./myComponent/Header";
 import {Todos} from "./myComponent/Todos";
 import {Footer} from "./myComponent/Footer";
 import {AddTodo} from "./myComponent/AddTodo";
+import {about} from './myComponent/about'
 // import { Todo } from './myComponent/Todo';
 import React, { useState ,useEffect} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  
+} from "react-router-dom";
 
 
 
@@ -70,12 +77,27 @@ return e!==todo;
   return (
     
     <>  
+    <Router>
 
       
       <Header title="CS Todo" search="true" />
-      <AddTodo AddTodoData={AddTodoData}/>
-      <Todos todoList={todoList} onDelete={onDelete}/>
+      <Switch>
+          <Route exact path="/" render={()=>{
+            return (
+              <>
+              <AddTodo AddTodoData={AddTodoData}/>
+              <Todos todoList={todoList} onDelete={onDelete}/>
+              </>
+            )
+          }}>            
+          </Route>
+          <Route exact path="/about">
+            <about />
+          </Route>
+        </Switch>
+      
       <Footer/>
+      </Router>
 </>
   );
 }
