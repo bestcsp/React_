@@ -1,36 +1,52 @@
 import React, { useState } from 'react';
-// import AddTodoData from '../App';
-
 
 export const AddTodo = (props) => {
-    // props.todoList.map((e)=>{
-        const [title, settitle] = useState("")
-        const [Desc, setDesc] = useState("")
-const submit =(e)=>{
-    e.preventDefault();
-    if(!title || !Desc){
-        alert("Fill Data")
-    }
-    else{
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
 
-      props.AddTodoData(title,Desc);
-      settitle("")
-      setDesc("")
-    }
-}
+    const submit = (e) => {
+        e.preventDefault();
+        if (!title.trim() || !desc.trim()) {
+            alert("Please fill in both Title and Description.");
+            return;
+        }
+        props.AddTodoData(title, desc);
+        setTitle("");
+        setDesc("");
+    };
+
     return (
-        
-<form onSubmit={submit }>
-    
-  <div className=" container mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Add Todo </label>
-    <input type="text" value={title} className=" mx-5 px-1" onChange={(e)=>{settitle(e.target.value)}}/><br/>
-    <label htmlFor="exampleInputEmail1" className="form-label">Add Description</label>
-    <input type="text" value={Desc} onChange={(e)=>{setDesc(e.target.value)}} className=" mx-1" />
-    <button type="submit" className="btn btn-sm btn-success">Submit</button>
-
-  </div>
-  
-</form>
-
-)}
+        <div className="container my-4">
+            <h3 className="text-center mb-4">Add a New ToDo</h3>
+            <form onSubmit={submit}>
+                <div className="mb-3">
+                    <label htmlFor="todoTitle" className="form-label">Title</label>
+                    <input
+                        type="text"
+                        id="todoTitle"
+                        className="form-control"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Enter ToDo title"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="todoDesc" className="form-label">Description</label>
+                    <input
+                        type="text"
+                        id="todoDesc"
+                        className="form-control"
+                        value={desc}
+                        onChange={(e) => setDesc(e.target.value)}
+                        placeholder="Enter ToDo description"
+                    />
+                </div>
+                <div className="text-center">
+                    <button type="submit" className="btn btn-success">
+                        Add ToDo
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
+};

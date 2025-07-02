@@ -4,7 +4,7 @@ import Header from "./myComponent/Header";
 import {Todos} from "./myComponent/Todos";
 import {Footer} from "./myComponent/Footer";
 import {AddTodo} from "./myComponent/AddTodo";
-import {about} from './myComponent/about'
+import About from './myComponent/About'
 // import { Todo } from './myComponent/Todo';
 import React, { useState ,useEffect} from 'react';
 import {
@@ -92,7 +92,7 @@ return e!==todo;
           }}>            
           </Route>
           <Route exact path="/about">
-            <about />
+            <About />
           </Route>
         </Switch>
       
